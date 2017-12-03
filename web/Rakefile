@@ -1,0 +1,21 @@
+require 'pp'
+require 'uri'
+require 'json'
+require 'logger'
+require 'aws-sdk'
+require 'colorize'
+require 'rest-client'
+
+LIB_DIR = File.expand_path(File.join(File.dirname(__FILE__), 'libs'))
+require format('%s/cache.rb', LIB_DIR)
+require format('%s/linker.rb', LIB_DIR)
+
+desc 'Run rspec tests'
+task :test do |t,args|
+  system('source ~/.aws/cybraics-prod ; rspec tests/*.rb')
+end
+
+desc 'Run rubocop tests'
+task :rubocop do 
+  system('rubocop -D --only-guide-cops --config .rubocop_todo.yml')
+end

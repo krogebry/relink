@@ -1,0 +1,18 @@
+
+<h1>Cybraics Linker</h1>
+
+<table>
+  <tr>
+    <th>Friendly Name</th>
+    <th>Link</th>
+  </tr>
+  <% links.each do |link| %>
+  <tr>
+    <td><a href="/<%= link['name'] %>"><%= link['name'] %></a></td>
+    <td><a href="<%= link['link'] %>"><%= link['link'] %></a></td>
+  </tr>
+  <% end %>
+</table>
+
+<hr/>
+<a href="/create">Create new link</a>

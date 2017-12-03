@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/create.css">
+
+<div class="create-link-card">
+  <h1>Create new shortcut link.</h1>
+
+  <form action="/relink" method="POST">
+    <label for="source_link">Source link</label>
+    <input type="text" name="source_link" width="400" value="https://wiki.int.cybraics.com/display/OPS/On-call+Contacts"/>
+
+    <input name="autogen" type="checkbox" value="Auto"/>
+    <label for="autogen">Autogenerate link</label>
+    <br/> <br/>
+
+    <label for="friendly_name">Friendly name</label>
+    <input type="text" name="friendly_name" width="400" value="on-call"/>
+
+    <input type="submit" />
+  </form>
+</div>

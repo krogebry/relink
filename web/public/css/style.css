@@ -1,0 +1,44 @@
+/**
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+*/
+
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+}
+
+table {
+	font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.flash_okay {
+	text-align: center;
+  background: #2bc417;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  border:1px solid #24ef09;
+  margin:0px;
+}
+
+.flash_notice {
+  width:100%;
+  margin:10px;
+  border:1px solid #e8cc19;
+	text-align: center;
+  background: #ceb829;
+  margin-left:auto;
+  margin-right:auto;
+}
+
