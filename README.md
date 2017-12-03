@@ -15,15 +15,15 @@ make login
 ### Pull images from ECR
 
 ```bash
-docker pull 649907491639.dkr.ecr.us-west-2.amazonaws.com/mongo
-docker pull 649907491639.dkr.ecr.us-west-2.amazonaws.com/relink
+docker pull ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/mongo
+docker pull ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/relink
 ```
 
 ### Run locally
 
 ```bash
-docker run -p 27017:27017 649907491639.dkr.ecr.us-west-2.amazonaws.com/mongo
-docker run -p 80:8080 649907491639.dkr.ecr.us-west-2.amazonaws.com/relink
+docker run -p 27017:27017 ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/mongo
+docker run -p 80:8080 ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/relink
 ```
 
 @TODO: docker-compose
