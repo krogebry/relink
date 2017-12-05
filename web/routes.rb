@@ -22,7 +22,7 @@ get '/' do
 end
 
 get '/create' do
-  erb :create
+  erb :link, locals: { message: 'Create new link' }
 end
 
 get '/favicon.ico' do
@@ -33,19 +33,36 @@ get '/:key' do
   LOG.debug(format('Searching for %s', params[:key]))
   search = MDB[:links].find({ name: params[:key] })
   if search.count == 0
-    erb :index, locals: { name: params[:key] }
+    redirect '/'
+    #erb :index, locals: { name: params[:key] }
   else
     redirect search.first['link']
   end
 end
 
+get '/:link_id/edit' do
+  search = MDB[:links].find({ _id: BSON::ObjectId(params[:link_id]) })
+  erb :link, locals: { link: search.first, message: 'Edit link.' }
+end
+
+get '/:link_id/delete' do
+  search = MDB[:links].find({ _id: BSON::ObjectId(params[:link_id]) })
+  # erb :link, locals: { link: search.first, message: 'Edit link.' }
+  MDB[:links].delete_one(_id: search.first['_id'])
+  redirect '/'
+end
+
 post '/relink' do
-  pp params
   doc = {
     link: params['source_link'],
     name: params['friendly_name']
   }
-  MDB[:links].insert_one doc
-  #{ success: true }.to_json
+
+  if params['link_id']
+    LOG.debug('Updating')
+    MDB[:links].update_one({ _id: BSON::ObjectId(params['link_id']) }, doc)
+  else
+    MDB[:links].insert_one doc
+  end
   redirect '/'
 end

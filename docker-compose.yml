@@ -1,15 +1,17 @@
 ---
 version: '3'
 services:
-  web:
-    build: .
-    ports:
-      - "80:8080"
-    environment:
-      - DB_HOSTNAME=mongo
-    links:
-      - mongo
+  #web:
+    #build: .
+    #ports:
+      #- "80:8080"
+    #environment:
+      #- DB_HOSTNAME=mongo
+    #links:
+      #- mongo
   mongo:
     image: mongo
+    ports:
+      - "27017:27017"
     volumes:
       - /opt/relink/data:/data/db

@@ -1,13 +1,17 @@
 <h1>Linker</h1>
 <table>
   <tr>
+    <th></th>
+    <th></th>
     <th>Friendly Name</th>
     <th>Link</th>
   </tr>
   <% links.each do |link| %>
   <tr>
+    <td><a href="/<%= link['_id'] %>/edit">Edit</a></td>
+    <td><a href="/<%= link['_id'] %>/delete">Delete</a></td>
     <td><a href="/<%= link['name'] %>"><%= link['name'] %></a></td>
-    <td><a href="<%= link['link'] %>"><%= link['link'] %></a></td>
+    <td><a href="<%= link['link'] %>"><%= link['link'][0,80] %></a></td>
   </tr>
   <% end %>
 </table>
