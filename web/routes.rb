@@ -3,13 +3,17 @@ get '/healthz' do
 end
 
 get '/connz' do
-  success = false
-  messages = []
-  { success: success, messages: messages }.to_json
+  { success: true, info: {
+     :db_hostname => DB_HOSTNAME
+  }}.to_json
 end
 
 get '/metrics' do
   {}.to_json
+end
+
+get '/version' do
+  { :version => VERSION }.to_json
 end
 
 get '/flush_cache' do

@@ -1,8 +1,8 @@
 VERSION=`cat web/VERSION`
-USER_NAME=ec2-user
-USER_ID=500
+# USER_NAME=ec2-user
+# USER_ID=500
 
-REGION=us-west-2
+REGION=us-east-1
 
 tag_mongo:
 	docker tag mongo:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/mongo:latest

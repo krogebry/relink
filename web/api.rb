@@ -23,12 +23,12 @@ begin
   VERSION = File.read('VERSION')
 
   DB_HOSTNAME = ENV['DB_HOSTNAME'] ||= '127.0.0.1'
-
   MDB = Mongo::Client.new([format('%s:27017', DB_HOSTNAME)], :database => 'relink')
 
 rescue => e
   LOG.fatal(format('Failed to create logger: %s', e))
   exit
+
 end
 
 require './routes.rb'
