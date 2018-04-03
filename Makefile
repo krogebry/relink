@@ -10,7 +10,14 @@ tag_mongo:
 push_mongo:
 	docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/mongo:latest
 
-docker_image: 
+redir:
+	cd docker ; docker build -t redir:latest -f redir.docker .
+
+run_redir:
+	# docker rm redir
+	docker run --rm -e "ENV_NAME=dev" -e "AWS_PROFILE=${AWS_PROFILE}" --name redir -v ~/.aws:/root/.aws -p 80:80 redir:latest
+
+docker:
 	docker build -t relink:${VERSION} .
 
 push:

@@ -10,6 +10,6 @@ WORKDIR /opt/relink/
 RUN bundle update
 
 COPY ./web/ /opt/relink/
-COPY bin/wrapper.sh /opt/relink
+COPY web/wrapper.sh /opt/relink
 
 ENTRYPOINT [ "/opt/relink/wrapper.sh" ]

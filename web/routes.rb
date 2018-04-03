@@ -3,8 +3,23 @@ get '/healthz' do
 end
 
 get '/connz' do
+  begin
+    res = MDB[:links].find().limit(1).count
+    if res
+      test_db = format('Connected to db!' )
+    else
+      test_db = 'Query failed'
+    end
+
+  rescue Mongo::Error::NoServerAvailable => e
+    test_db = e.class
+  rescue => e
+    test_db = 'Generic failure'
+  end
+
   { success: true, info: {
-     :db_hostname => DB_HOSTNAME
+      :db_test => test_db,
+      :db_hostname => DB_HOSTNAME
   }}.to_json
 end
 

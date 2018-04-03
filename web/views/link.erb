@@ -5,9 +5,9 @@
 
   <form action="/relink" method="POST">
     <label for="source_link">Source link</label>
-    <input type="text" name="source_link" width="400" value="<%= link['link'] if link %>"/>
+    <input type="text" name="source_link" width="400" value="<%= @link['link'] if defined?(@link) %>"/>
 
-    <% if link %>
+    <% if @link %>
     <input type="hidden" name="link_id" value="<%= link['_id'] %>" />
     <% end %>
 
@@ -18,7 +18,7 @@
     -->
 
     <label for="friendly_name">Friendly name</label>
-    <input type="text" name="friendly_name" width="400" value="<%= link['name'] if link %>"/>
+    <input type="text" name="friendly_name" width="400" value="<%= @link['name'] if @link %>"/>
 
     <input type="submit" />
   </form>
