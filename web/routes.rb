@@ -48,6 +48,18 @@ get '/favicon.ico' do
   ''
 end
 
+get '/backup' do
+  links = MDB[:links].find().map{|l| l.to_h }
+  {links: links}.to_json
+end
+
+post '/restore' do
+  links = params[:links]
+  links.each do |link|
+    LOG.debug(format('Restoring link: %s', link['name']))
+  end
+end
+
 get '/:key' do
   LOG.debug(format('Searching for %s', params[:key]))
   search = MDB[:links].find({ name: params[:key] })
@@ -70,6 +82,7 @@ get '/:link_id/delete' do
   MDB[:links].delete_one(_id: search.first['_id'])
   redirect '/'
 end
+
 
 post '/relink' do
   doc = {
